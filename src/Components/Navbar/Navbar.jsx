@@ -1,22 +1,23 @@
 import { Link } from "react-router-dom";
+import logo from "../../assets/download (3).png"
 
 const Navbar = () => {
   const navlist = (
     <>
       <li>
-        <Link to="/">Item 1</Link>
+        <Link to="/">Home</Link>
         
       </li>
       <li>
-        <Link to="/">Item 1</Link>
+        <Link to="/about">About</Link>
         
       </li>
       <li>
-        <Link to="/">Item 1</Link>
+        <Link to="/allTask">All Task</Link>
         
       </li>
       <li>
-        <Link to="/">Item 1</Link>
+        <Link to="/register">Register</Link>
         
       </li>
     </>
@@ -48,7 +49,7 @@ const Navbar = () => {
             {navlist}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">TMS</a>
+        <img src={logo} className="btn btn-ghost text-xl"></img>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -56,7 +57,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        <Link to="/login" className="btn">Login</Link>
       </div>
     </div>
   );
