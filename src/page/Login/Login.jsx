@@ -31,7 +31,9 @@ const Login = () => {
     }}>
     <Toaster position="top-center" reverseOrder={false} />
     <div className="card md:w-1/2 w-full max-w-sm shadow-3xl text-white">
-    
+    <div className="text-3xl text-center  pt-5  text-white font-bold">
+           Login Now
+          </div>
     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
       <div className="form-control">
         <label className="label">
@@ -88,11 +90,11 @@ const Login = () => {
         )}
       </div>
 
-      <div className="form-control mt-6">
+      <div className="form-control mt-6 ">
         <input
           type="submit"
           value="Login"
-          className="btn bg-[#ebc38b] hover:bg-[#fab351]"
+          className="btn bg-blue-500 hover:bg-blue-700 text-white"
         />
       </div>
     </form>

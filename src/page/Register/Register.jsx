@@ -5,7 +5,7 @@ import toast, { Toaster } from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
-  const { createUser } = useAuth();
+  const { createUser, updatedUserProfile } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -20,9 +20,10 @@ const Register = () => {
 
   const onSubmit = (data) => {
     createUser(data?.email, data?.password)
-      .then((data) => {
-        console.log(data);
-        toast.success("Register Successfully");
+      .then(() => {
+        updatedUserProfile(data.name, data.photoURL).then(() => {
+          toast.success("Register Successfully");
+        });
       })
       .catch((err) => {
         console.log(err);

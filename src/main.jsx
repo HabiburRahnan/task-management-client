@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
 import {
   createBrowserRouter,
@@ -14,7 +13,12 @@ import AuthProvider from './Provider/AuthProvider.jsx';
 import About from './page/About/About.jsx';
 import AllTask from './page/AllTask/AllTask.jsx';
 import Dashboard from './Layout/Dashboard.jsx';
+import AddTask from './page/Dashboard/AddTask/AddTask.jsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+
+
+const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,16 +51,25 @@ const router = createBrowserRouter([
     element:<Dashboard></Dashboard>,
     children:[
       {
-        
-      }
+        path:"/dashboard/addTask",
+        element:<AddTask></AddTask>
+
+      },
+      {
+        path:"/dashboard/allTask",
+        element:<AllTask></AllTask>
+
+      },
     ]
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+  <QueryClientProvider client={queryClient}>
   <AuthProvider>
   <RouterProvider router={router} />
   </AuthProvider>
+  </QueryClientProvider>
   </React.StrictMode>,
 )

@@ -1,5 +1,5 @@
-import { BsHouse, BsLifePreserver } from "react-icons/Bs";
-import { MdMenu, MdReviews } from "react-icons/Md";
+import { BsHouse, } from "react-icons/Bs";
+import { MdMenu,  } from "react-icons/Md";
 import { Link, NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
@@ -11,8 +11,13 @@ const Dashboard = () => {
         <ul className="menu md:p-4 dashboardItem">
           <>
           <li>
-            <Link to="/">
+            <Link to="/dashboard/addTask">
               <BsHouse></BsHouse>Task
+            </Link>
+          </li>
+          <li>
+            <Link to="/dashboard/allTask">
+              <BsHouse></BsHouse>All Task
             </Link>
           </li>
           </>
