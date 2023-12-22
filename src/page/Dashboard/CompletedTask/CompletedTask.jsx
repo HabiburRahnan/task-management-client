@@ -2,7 +2,7 @@
 const CompletedTask = () => {
     return (
         <div>
-            
+           
         </div>
     );
 };

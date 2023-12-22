@@ -15,6 +15,9 @@ import AllTask from './page/AllTask/AllTask.jsx';
 import Dashboard from './Layout/Dashboard.jsx';
 import AddTask from './page/Dashboard/AddTask/AddTask.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Benefit from './page/Benefit/Benefit.jsx';
+import CompletedTask from './page/Dashboard/CompletedTask/CompletedTask.jsx';
+import MyTask from './page/Dashboard/MyTask/MyTask.jsx';
 
 
 
@@ -44,6 +47,10 @@ const router = createBrowserRouter([
         path:'/allTask',
         element:<AllTask></AllTask>
       },
+      {
+        path:'/benefit',
+        element:<Benefit></Benefit>
+      },
     ]
   },
   {
@@ -53,6 +60,16 @@ const router = createBrowserRouter([
       {
         path:"/dashboard/addTask",
         element:<AddTask></AddTask>
+
+      },
+      {
+        path:"/dashboard/completed",
+        element:<CompletedTask></CompletedTask>
+
+      },
+      {
+        path:"/dashboard/myTask",
+        element:<MyTask></MyTask>
 
       },
       {
