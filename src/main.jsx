@@ -16,8 +16,8 @@ import Dashboard from './Layout/Dashboard.jsx';
 import AddTask from './page/Dashboard/AddTask/AddTask.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Benefit from './page/Benefit/Benefit.jsx';
-import CompletedTask from './page/Dashboard/CompletedTask/CompletedTask.jsx';
 import MyTask from './page/Dashboard/MyTask/MyTask.jsx';
+import Profile from './Components/Profile/Profile.jsx';
 
 
 
@@ -44,6 +44,10 @@ const router = createBrowserRouter([
         element:<About></About>
       },
       {
+        path:'/profile',
+        element:<Profile></Profile>
+      },
+      {
         path:'/allTask',
         element:<AllTask></AllTask>
       },
@@ -62,11 +66,7 @@ const router = createBrowserRouter([
         element:<AddTask></AddTask>
 
       },
-      {
-        path:"/dashboard/completed",
-        element:<CompletedTask></CompletedTask>
-
-      },
+      
       {
         path:"/dashboard/myTask",
         element:<MyTask></MyTask>

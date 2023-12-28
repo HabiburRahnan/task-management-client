@@ -1,22 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
-import { FaEdit, FaTrashAlt } from "react-icons/Fa";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useForm } from "react-hook-form";
+import useAuth from "../../../hooks/useAuth";
 import { useState } from "react";
-import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { FaEdit, FaTrashAlt } from "react-icons/Fa";
 
-const MyTask = () => {
-  const { user } = useAuth();
+const Ongoing = () => {
+
+    const { user } = useAuth();
   const [id, setId] = useState();
   // console.log(user);
 
   const { data: tasks = [], refetch } = useQuery({
     queryKey: ["task"],
     queryFn: async () => {
-      const res = await axios.get(`https://task-management-server-sandy-xi.vercel.app/task/${user?.email}`);
+      const res = await axios.get(`https://task-management-server-sandy-xi.vercel.app/`);
 
       return res.data;
     },
@@ -85,51 +85,8 @@ const MyTask = () => {
     }
   };
 
-  const handleOngoing = async (item) => {
-    const status = "Ongoing";
-    const taskItem = {
-      taskName: item.taskName,
-      type: item.type,
-      date: item.date,
-      description: item.description,
-      userEmail: userEmail,
-      userphoto: userphoto,
-      userName: userName,
-      status: status,
-    };
-    const taskRes = await axios.patch(
-      `https://task-management-server-sandy-xi.vercel.app/task/${item._id}`,
-      taskItem
-    );
-    console.log(taskRes);
-    if (taskRes.data.modifiedCount > 0) {
-      toast.success("task Ongoing Successfully");
-    }
-  };
-  const handleCompleted = async (item) => {
-    const status = "Completed";
-    const taskItem = {
-      taskName: item.taskName,
-      type: item.type,
-      date: item.date,
-      description: item.description,
-      userEmail: userEmail,
-      userphoto: userphoto,
-      userName: userName,
-      status: status,
-    };
-    const taskRes = await axios.patch(
-      `https://task-management-server-sandy-xi.vercel.app/task/${item._id}`,
-      taskItem
-    );
-    console.log(taskRes);
-    if (taskRes.data.modifiedCount > 0) {
-      toast.success("task Completed Successfully");
-    }
-  };
-
-  return (
-    <div>
+    return (
+        <div>
       <h1 className="text-3xl font-bold text-blue-700 text-center py-10">
         MY Task
       </h1>
@@ -153,22 +110,7 @@ const MyTask = () => {
                 {tasks?.map((item) => (
                   <tr key={item._id}>
                     <th>
-
-                      {item.status == "TODO" ? (
-                        <Link
-                          className="btn"
-                          onClick={() => handleOngoing(item)}
-                        >
-                          Ongoing
-                        </Link>
-                      ) : (
-                        <Link
-                          className="btn"
-                          onClick={() => handleCompleted(item)}
-                        >
-                          Completed
-                        </Link>
-                      )}
+                      <Link to={``}>Completed</Link>
                     </th>
                     <td>
                       <div className="flex items-center gap-3">
@@ -206,37 +148,18 @@ const MyTask = () => {
                         <div className="modal-box">
                           <form onSubmit={handleSubmit(onSubmit)}>
                             {/* task title */}
-                            <div className="md:flex justify-center items-center gap-6">
-                              <div className="form-control w-full my-6">
-                                <label className="label">
-                                  <span className="label-text">
-                                    Task Title*
-                                  </span>
-                                </label>
-                                <input
-                                  {...register("taskName")}
-                                  type="text"
-                                  required
-                                  defaultValue={item.taskName}
-                                  placeholder="Task Title"
-                                  className="input input-bordered w-full "
-                                />
-                              </div>
-                              <div className="form-control w-full my-6">
-                                <label className="label">
-                                  <span className="label-text">
-                                    Task Title*
-                                  </span>
-                                </label>
-                                <input
-                                  {...register("taskName")}
-                                  type="text"
-                                  required
-                                  defaultValue={item.Status}
-                                  placeholder="Task Title"
-                                  className="input input-bordered w-full "
-                                />
-                              </div>
+                            <div className="form-control w-full my-6">
+                              <label className="label">
+                                <span className="label-text">Task Title*</span>
+                              </label>
+                              <input
+                                {...register("taskName")}
+                                type="text"
+                                required
+                                defaultValue={item.taskName}
+                                placeholder="Task Title"
+                                className="input input-bordered w-full "
+                              />
                             </div>
 
                             <div className="md:flex justify-center items-center gap-6">
@@ -326,7 +249,7 @@ const MyTask = () => {
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-export default MyTask;
+export default Ongoing;

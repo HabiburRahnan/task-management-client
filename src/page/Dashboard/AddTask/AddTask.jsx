@@ -10,6 +10,7 @@ const AddTask = () => {
   const userEmail = user?.email;
   const userphoto = user?.photoURL;
   const userName = user?.displayName;
+  const status = "TODO";
   const onSubmit = async (data) => {
     console.log(data);
 
@@ -21,9 +22,10 @@ const AddTask = () => {
       userEmail: userEmail,
       userphoto: userphoto,
       userName: userName,
+      status: status,
     };
     //  now
-    const taskRes = await axios.post("http://localhost:5000/task", taskItem);
+    const taskRes = await axios.post("https://task-management-server-sandy-xi.vercel.app/task", taskItem);
     // console.log(taskRes.data);
     if (taskRes.data.insertedId) {
       reset();

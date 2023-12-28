@@ -10,7 +10,7 @@ const AllTask = () => {
   const { data: tasks = [] } = useQuery({
     queryKey: ["task"],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/task`);
+      const res = await axios.get(`https://task-management-server-sandy-xi.vercel.app/task`);
 
       return res.data;
     },

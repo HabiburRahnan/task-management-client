@@ -1,5 +1,5 @@
-import { MdAddToDrive, MdBorderAll,MdHome ,MdOutlineMenuOpen} from "react-icons/md";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { MdAddToDrive, MdBorderAll,MdHome } from "react-icons/md";
+import { Link, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -18,11 +18,7 @@ const Dashboard = () => {
                 <MdBorderAll /> All Task
               </Link>
             </li>
-            <li>
-              <Link to="/dashboard/completed">
-                <MdBorderAll /> Completed
-              </Link>
-            </li>
+            
             <li>
               <Link to="/dashboard/myTask">
                 <MdBorderAll /> My Task
@@ -36,11 +32,7 @@ const Dashboard = () => {
             <MdHome /> Home
             </Link>
           </li>
-          <li>
-            <NavLink to="/allTask">
-            <MdOutlineMenuOpen /> Our Meals
-            </NavLink>
-          </li>
+          
         </ul>
       </div>
 
